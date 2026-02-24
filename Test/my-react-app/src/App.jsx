@@ -6,11 +6,12 @@ import './App.css'
 function App() {
   const [ChangeCurrency, setChangeCurrency] = useState(0)
   const [toCurrency, setToCurrency] = useState('USD')
+  const [USDCoversion, setUSDCoversionTothers] = useState(0)
   
   
  
    
-  //currency converter from KES to USD, EUR, GBP
+  //currency converter from KES/USD to USD/K, EUR, GBP
   const convertCurrency = (amount, fromCurrency, toCurrency) => {
     const exchangeRates = {
       USD: 0.0091, // 1 KES = 0.0091 USD
@@ -22,12 +23,15 @@ function App() {
       throw new Error(`Unsupported currency: ${toCurrency}`);
     }
 
+
     return amount * exchangeRates[toCurrency];
   }
+
 
   return (
     <>
         <div>
+          <p> Currency Converter from KES to USD, EUR, GBP</p>
         <input type="number" value={ChangeCurrency} onChange={(e) => setChangeCurrency(Number(e.target.value))} />  
         </div>   
         <div>
